@@ -1,0 +1,34 @@
+#
+# PKGBUILD for the WaTTS info plugin
+#
+# Under any pacman based distro (e.g. Arch Linux) install `base-devel' and then run:
+#  $ cd pkg/arch && makepkg -d
+#
+# This is sort of a stub, as there is no WaTTS Arch Linux package.
+#
+# Maintainer: Joshua Bachmeier <uwdkl@student.kit.edu>
+#
+
+pkgname=$(echo $CONFIG | jq -r .pkg.name)
+_pkgname=$(echo $CONFIG | jq -r .archive.name)
+url="https://github.com/indigo-dc/tts_plugin_info"
+pkgver=$(echo $CONFIG | jq -r .pkg.version)
+pkgrel=1
+pkgdesc=$(echo $CONFIG | jq -r .pkg.short_desc)
+arch=(any)
+license=(Apache)
+depends=(watts)
+for dep in $(echo $CONFIG | jq -r '.deps.arch[]')
+do
+    depends+=($dep)
+done
+
+source=("${pkgname}-${pkgver}.tar.gz::$(echo $CONFIG | jq -r .archive.targz)")
+md5sums=('SKIP')
+
+package() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+
+    mkdir -p "${pkgdir}/var/lib/watts/plugins"
+    cp plugin/* "${pkgdir}/var/lib/watts/plugins"
+}
