@@ -25,6 +25,8 @@ Plugin Structure
 ================
 Your repository should contain a folder `plugin/`,
 everything here will be packaged to `/var/lib/watts/plugins`.
+We recommend to place your config file (see below) in `pkg/config.json`,
+so you can simply do `./makepkg.sh https://github.com/indigo-dc/tts_plugin_info/raw/master/pkg/config.json` or similar.
 
 Config Schema
 =============
