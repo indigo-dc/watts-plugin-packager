@@ -15,7 +15,7 @@ else
         if   [[ -f $2 ]];       then jq -c . "$2"
         elif [[ $2 =~ ^http ]]; then curl -L "$2"
         fi | (if [[ $(jq -V 2>&1 | cut -d' ' -f3) < "1.4" ]]
-              then echo $0: WARNING: "Can't use default config with jq < 1.4" >&2; cat
+              then echo $0: WARNING: "Can't use default config with jq < 1.4. This may not work" >&2; cat
               else jq '{
                  pkg: {
                    long_desc: .pkg.short_desc,
