@@ -23,7 +23,7 @@ else
                  },
                  archive: {
                    name: .pkg.name,
-                   targz: ("https://github.com/indigo-dc/"+.pkg.name+"/archive/v"+.pkg.version+".tar.gz")
+                   targz: ("https://github.com/indigo-dc/"+(.archive.name//.pkg.name)+"/archive/v"+.pkg.version+".tar.gz")
                  }
                } * .'
               fi))
