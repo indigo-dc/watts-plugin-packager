@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Package WaTTS plugins for pacman, apt and yum.
+#
+# Author: Joshua Bachmeier <uwdkl@student.kit.edu>
+#
 
 if [[ $# -le 1 ]]
 then
