@@ -34,10 +34,10 @@ You also need to provide a json config file. Schema:
 ```js
 {
     "pkg" : {
-        "name" : <required>,
-        "short_desc" : <required>,
+        "name" : <required, e.g. "watts-plugin-foo">,
+        "short_desc" : <required, e.g. "WaTTS Foo Plugin">,
         "long_desc" : <optional, defautls to .pkg.short_desc> ,
-        "version" : <required>,
+        "version" : <required, e.g. "1.0.3">,
         "vendor" : <optional, defaults to .pkg.maintainer>,
         "maintainer" : <required, like "Alan Turing <alan.turing@example.org>"
     },
