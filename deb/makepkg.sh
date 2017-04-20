@@ -17,9 +17,9 @@ srcdir=$(readlink -f ${_pkgname}-${pkgver})
 pkgdir=$(readlink -f ${pkgname}_${pkgver}-${pkgrel})
 
 
-curl -L $(echo $CONFIG | jq -r .archive.targz) -o ${pkgname}-${pkgver}.tar.gz
-tar xf "${pkgname}-${pkgver}.tar.gz"
-mkdir -p "${pkgdir}"
+curl -L $(echo $CONFIG | jq -r .archive.targz) -o ${pkgname}-${pkgver}.tar.gz || exit
+tar xf "${pkgname}-${pkgver}.tar.gz" || exit
+mkdir -p "${pkgdir}" || exit
 
 # Dependencies
 depends=(tts)
@@ -29,7 +29,7 @@ do
 done
 
 # Debian stuff
-mkdir -p "${pkgdir}/DEBIAN"
+mkdir -p "${pkgdir}/DEBIAN" || exit
 cat << EOF > ${pkgdir}/DEBIAN/control
 Package: ${pkgname}
 Version: ${pkgver}-${pkgrel}
@@ -42,8 +42,8 @@ EOF
 
 # Package
 pushd "${srcdir}"
-mkdir -p "${pkgdir}/var/lib/watts/plugins"
-cp plugin/* "${pkgdir}/var/lib/watts/plugins"
+mkdir -p "${pkgdir}/var/lib/watts/plugins" || exit
+cp plugin/* "${pkgdir}/var/lib/watts/plugins" || exit
 popd
 
 # Finale
