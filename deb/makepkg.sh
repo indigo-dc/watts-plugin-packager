@@ -42,6 +42,7 @@ EOF
 
 # Package
 pushd "${srcdir}"
+eval $(echo $CONFIG | jq -r .build.bash) || exit
 mkdir -p "${pkgdir}/var/lib/watts/plugins" || exit
 cp plugin/* "${pkgdir}/var/lib/watts/plugins" || exit
 popd

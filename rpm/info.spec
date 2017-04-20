@@ -31,6 +31,10 @@ cd $RPM_SOURCE_DIR
 curl -L %(echo $CONFIG | jq -r .archive.targz) -o %name-%version.tar.gz
 tar xf %name-%version.tar.gz
 
+%build
+cd $RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version
+eval $(echo $CONFIG | jq -r .build.bash)
+
 %install
 cd $RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version
 mkdir -p "$RPM_BUILD_ROOT/var/lib/watts/plugins"

@@ -49,6 +49,9 @@ You also need to provide a json config file. Schema:
     "archive" : {
         "name" : <optional, defaults to .pgk.name>,
         "targz" : <optional, defaults to "https://github.com/indigo-dc/".archive.name"/archive/v".pkg.version".tar.gz">
+    },
+    "build": {
+    	"bash": <optional, e.g. "./configure && make">
     }
 }
 ```
@@ -59,7 +62,10 @@ it has to contain a single folder `<.archive.name>-<.pkg.version>`.
 For each target distro you need to specify different dependencies,
 as the packages may be called differently in different distros.
 
-Not all keys are needed for all target distros, e.g. _Arch Linux_ does not use ``.pkg.maintainer` or `.pkg.long_desc`.
+`.build.bash` is evaluated by bash before packaging the `plugin/` folder.
+Use this e.g. if you require your plugin to be compiled.
+
+Not all keys are needed for all target distros, e.g. _Arch Linux_ does not use `.pkg.maintainer` or `.pkg.long_desc`.
 
 Dependencies
 ============
