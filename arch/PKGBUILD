@@ -34,8 +34,7 @@ fi
 md5sums=('SKIP')
 
 build() {
-    dirs=(${srcdir}/${_pkgname}-${pkgver}*)
-    cd ${dirs}
+    cd $(find "${srcdir}" -maxdepth 1 -type d -name "${_pkgname}*${pkgver}*" | head -n1)
 
     echo $CONFIG | jq -r .build.bash[] | while read cmd
     do
@@ -44,9 +43,8 @@ build() {
 }
 
 package() {
-    dirs=(${srcdir}/${_pkgname}-${pkgver}*)
-    cd ${dirs}
+    cd $(find "${srcdir}" -maxdepth 1 -type d -name "${_pkgname}*${pkgver}*" | head -n1)
 
     mkdir -p "${pkgdir}/var/lib/watts/plugins"
-    cp plugin/* "${pkgdir}/var/lib/watts/plugins"
+    cp -r plugin/* "${pkgdir}/var/lib/watts/plugins"
 }

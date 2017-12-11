@@ -31,16 +31,14 @@ curl -fL %(echo $CONFIG | jq -r .archive.targz) -o %name-%version.tar.gz
 tar xf %name-%version.tar.gz
 
 %build
-dirs=($RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version*)
-cd ${dirs[1]}
+cd %(find "${srcdir}" -maxdepth 1 -type d -name "${_pkgname}*${pkgver}*" | head -n1)
 echo $CONFIG | jq -r .build.bash[] | while read cmd
 do
     eval "$cmd"
 done
 
 %install
-dirs=($RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version*)
-cd ${dirs[1]}
+cd %(find "${srcdir}" -maxdepth 1 -type d -name "${_pkgname}*${pkgver}*" | head -n1)
 mkdir -p "$RPM_BUILD_ROOT/var/lib/watts/plugins"
 cp plugin/* "$RPM_BUILD_ROOT/var/lib/watts/plugins"
 

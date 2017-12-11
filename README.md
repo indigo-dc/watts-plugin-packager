@@ -58,7 +58,7 @@ You also need to provide a json config file. Schema:
 ```
 
 - `.archive.targz` is the URL of the gzipped tarball containing the repository,
-  it has to contain a single folder starting with `<.archive.name>-<.pkg.version>`.
+  it has to contain a single folder matching `<.archive.name>*<.pkg.version>*` (as per __find(1)__ syntax).
   Supported protocols are anything that __curl(1)__ supports, including `file://` and `http(s)://`.
   If access to the URL is restricted you can use `https://user:password@example.org/...` for HTTP basic auth.
   Other authentication methods are not supported,

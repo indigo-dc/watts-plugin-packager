@@ -13,7 +13,7 @@ _pkgname=$(echo $CONFIG | jq -r .archive.name)
 pkgver=$(echo $CONFIG | jq -r .pkg.version)
 pkgrel=1
 
-srcdir=(${_pkgname}-${pkgver}*)
+srcdir=$(readlink -f $(find -maxdepth 1 -type d -name "${_pkgname}*${pkgver}*" | head -n1))
 srcdir=$(readlink -f ${srcdir[1]})
 pkgdir=$(readlink -f ${pkgname}_${pkgver}-${pkgrel})
 
