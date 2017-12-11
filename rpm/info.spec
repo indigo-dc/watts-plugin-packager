@@ -33,7 +33,10 @@ tar xf %name-%version.tar.gz
 
 %build
 cd $RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version
-eval $(echo $CONFIG | jq -r .build.bash)
+echo $CONFIG | jq -r .build.bash[] | while read cmd
+do
+    eval "$cmd"
+done
 
 %install
 cd $RPM_SOURCE_DIR/%(echo $CONFIG | jq -r .archive.name)-%version

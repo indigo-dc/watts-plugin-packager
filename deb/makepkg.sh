@@ -42,7 +42,10 @@ EOF
 
 # Package
 pushd "${srcdir}"
-eval $(echo $CONFIG | jq -r .build.bash) || exit
+echo $CONFIG | jq -r .build.bash[] | while read cmd
+do
+    eval "$cmd"
+done
 mkdir -p "${pkgdir}/var/lib/watts/plugins" || exit
 cp plugin/* "${pkgdir}/var/lib/watts/plugins" || exit
 popd

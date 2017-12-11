@@ -27,7 +27,10 @@ source=("${pkgname}-${pkgver}.tar.gz::$(echo $CONFIG | jq -r .archive.targz)")
 md5sums=('SKIP')
 
 build() {
-    eval $(echo $CONFIG | jq -r .build.bash)
+    echo $CONFIG | jq -r .build.bash[] | while read cmd
+    do
+        eval "$cmd"
+    done
 }
 
 package() {

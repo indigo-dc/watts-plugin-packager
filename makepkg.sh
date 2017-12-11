@@ -31,7 +31,7 @@ else
                    targz: ("https://github.com/indigo-dc/"+(.archive.name//.pkg.name)+"/archive/v"+.pkg.version+".tar.gz")
                  },
                  build: {
-                   bash: "false"
+                   bash: []
                  }
                } * .'
               fi))
