@@ -27,6 +27,9 @@ source=("${pkgname}-${pkgver}.tar.gz::$(echo $CONFIG | jq -r .archive.targz)")
 md5sums=('SKIP')
 
 build() {
+    dirs=(${srcdir}/${_pkgname}-${pkgver}*)
+    cd ${dirs}
+
     echo $CONFIG | jq -r .build.bash[] | while read cmd
     do
         eval "$cmd"
@@ -34,7 +37,8 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    dirs=(${srcdir}/${_pkgname}-${pkgver}*)
+    cd ${dirs}
 
     mkdir -p "${pkgdir}/var/lib/watts/plugins"
     cp plugin/* "${pkgdir}/var/lib/watts/plugins"

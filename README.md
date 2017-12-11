@@ -57,7 +57,7 @@ You also need to provide a json config file. Schema:
 ```
 
 - `.archive.targz` is the URL of the gzipped tarball containing the repository,
-  it has to contain a single folder `<.archive.name>-<.pkg.version>`.
+  it has to contain a single folder starting with `<.archive.name>-<.pkg.version>`.
 
 - `.deps.<target>` contains the dependencies for the plugin
   (The WaTTS / TTS package is _not_ included automatically, see #1).
