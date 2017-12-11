@@ -33,6 +33,11 @@ else
                    name: .pkg.name,
                    targz: ("https://github.com/indigo-dc/"+(.archive.name//.pkg.name)+"/archive/v"+.pkg.version+".tar.gz")
                  },
+                 deps: {
+                   arch: [],
+                   arch: [],
+                   arch: []
+                 },
                  build: {
                    bash: []
                  }
