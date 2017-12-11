@@ -27,7 +27,7 @@ BuildArch:	    noarch
 
 %prep
 cd $RPM_SOURCE_DIR
-curl -L %(echo $CONFIG | jq -r .archive.targz) -o %name-%version.tar.gz
+curl -fL %(echo $CONFIG | jq -r .archive.targz) -o %name-%version.tar.gz
 tar xf %name-%version.tar.gz
 
 %build

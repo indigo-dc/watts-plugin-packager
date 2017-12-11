@@ -5,13 +5,14 @@ Package WaTTS plugins for _pacman_, _apt_ and _yum_.
 Synopsis
 ========
 ```sh
- $ ./makepkg.sh <type> <config>
+ $ ./makepkg.sh <type> <config> [curl_args...]
 ```
-Where `<type>` is one of `arch`, `deb` or `rpm`
-and `<config>` is either a filesystem path or a _http(s)_ URL to a json encoded config file.
+- `type` is one of `arch`, `deb` or `rpm`
+- `config` is either a filesystem path or a _http(s)_ URL to a JSON encoded config file
+- `curl_args` are passed to curl when downloading the config file
 
 ```sh
- $ ./makepkg.sh <config>
+ $ ./makepkg.sh <config> <curl_args>
 ```
 Same as above, but this time packages for all targets will be built (if possible on your system)
 

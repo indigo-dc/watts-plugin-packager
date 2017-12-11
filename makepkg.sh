@@ -15,10 +15,13 @@ then
     then echo $0: "ERROR: Don't know how to build packages on your distro"; exit 1
     fi
 else
-    type=$1
+    type=$1; shift
+    conf=$1; shift
+    curl_args=$@
+
     export CONFIG=$(
-        if   [[ -f $2 ]];       then jq -c . "$2"
-        elif [[ $2 =~ ^http ]]; then curl -L "$2"
+        if   [[ -f $conf ]];       then jq -c . "$conf"
+        elif [[ $conf =~ ^http ]]; then curl -fL $curl_args "$conf"
         fi | (if [[ $(jq -V 2>&1 | cut -d' ' -f3) < "1.4" ]]
               then echo $0: WARNING: "Can't use default config with jq < 1.4. This may not work" >&2; cat
               else jq '{

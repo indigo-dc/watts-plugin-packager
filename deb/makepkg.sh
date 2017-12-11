@@ -18,7 +18,7 @@ srcdir=$(readlink -f ${srcdir[1]})
 pkgdir=$(readlink -f ${pkgname}_${pkgver}-${pkgrel})
 
 
-curl -L $(echo $CONFIG | jq -r .archive.targz) -o ${pkgname}-${pkgver}.tar.gz || exit
+curl -fL $(echo $CONFIG | jq -r .archive.targz) -o ${pkgname}-${pkgver}.tar.gz || exit
 tar xf "${pkgname}-${pkgver}.tar.gz" || exit
 mkdir -p "${pkgdir}" || exit
 
