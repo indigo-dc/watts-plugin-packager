@@ -22,7 +22,7 @@ tar xf "${pkgname}-${pkgver}.tar.gz" || exit
 mkdir -p "${pkgdir}" || exit
 
 # Dependencies
-depends=(tts)
+depends=()
 for dep in $(echo $CONFIG | jq -r '.deps.deb[]')
 do
     depends+=($dep)

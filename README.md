@@ -58,8 +58,9 @@ You also need to provide a json config file. Schema:
 `.archive.targz` is the gzipped tarball containing the repository,
 it has to contain a single folder `<.archive.name>-<.pkg.version>`.
 
-`.deps.<target>` contains the dependencies for the plugin (additionally to WaTTS / TTS).
-For each target distro you need to specify different dependencies,
+`.deps.<target>` contains the dependencies for the plugin
+(The WaTTS / TTS package is _not_ included automatically, see #1).
+For each target distro you need to specify the dependencies separately,
 as the packages may be called differently in different distros.
 
 Each element in `.build.bash` is evaluated by bash before packaging the `plugin/` folder.

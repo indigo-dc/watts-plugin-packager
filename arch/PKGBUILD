@@ -17,7 +17,7 @@ pkgrel=1
 pkgdesc=$(echo $CONFIG | jq -r .pkg.short_desc)
 arch=(any)
 license=(Apache)
-depends=(watts)
+depends=()
 for dep in $(echo $CONFIG | jq -r '.deps.arch[]')
 do
     depends+=($dep)

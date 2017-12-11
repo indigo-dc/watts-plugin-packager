@@ -19,8 +19,7 @@ Version:    	  %(echo $CONFIG | jq -r .pkg.version)
 Release:    	  1
 License:    	  Apache
 Source0:        %(echo $CONFIG | jq -r .archive.targz)
-Requires:       tts
-# TODO deps
+Requires:       %(echo $CONFIG | jq -r '.deps.rpm | join(", ")')
 BuildArch:	    noarch
 
 %description
