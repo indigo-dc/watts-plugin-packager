@@ -55,22 +55,24 @@ You also need to provide a json config file. Schema:
     }
 }
 ```
-`.archive.targz` is the gzipped tarball containing the repository,
-it has to contain a single folder `<.archive.name>-<.pkg.version>`.
 
-`.deps.<target>` contains the dependencies for the plugin
-(The WaTTS / TTS package is _not_ included automatically, see #1).
-For each target distro you need to specify the dependencies separately,
-as the packages may be called differently in different distros.
+- `.archive.targz` is the URL of the gzipped tarball containing the repository,
+  it has to contain a single folder `<.archive.name>-<.pkg.version>`.
 
-Each element in `.build.bash` is evaluated by bash before packaging the `plugin/` folder.
-Use this e.g. if you require your plugin to be compiled.
+- `.deps.<target>` contains the dependencies for the plugin
+  (The WaTTS / TTS package is _not_ included automatically, see #1).
+  For each target distro you need to specify the dependencies separately,
+  as the packages may be called differently in different distros.
 
-Not all keys are needed for all target distros, e.g. _Arch Linux_ does not use `.pkg.maintainer` or `.pkg.long_desc`.
+- Each element in `.build.bash` is evaluated by bash before packaging the `plugin/` folder.
+  Use this e.g. if you require your plugin to be compiled.
+
+- Not all keys are needed for all target distros, e.g. _Arch Linux_ does not use `.pkg.maintainer` or `.pkg.long_desc`.
 
 Dependencies
 ============
 - `bash`, `findutils`, `coreutils`, obviously
+- `curl`, to retrieve package configs via __HTTP(S)__
 - Whatever packaging for your target requires (`base-devel` on Arch Linux, `rpmdevtools` on RHEL, `dpkg` on Debian).
 - `jq` - _Command-line JSON processor_, with version > 1.4.
   Older versions (like found in Ubuntu 14.04) will result in default configuration not being applied correctly.
