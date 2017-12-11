@@ -58,6 +58,10 @@ You also need to provide a json config file. Schema:
 
 - `.archive.targz` is the URL of the gzipped tarball containing the repository,
   it has to contain a single folder starting with `<.archive.name>-<.pkg.version>`.
+  Supported protocols are anything that __curl(1)__ supports, including `file://` and `http(s)://`.
+  If access to the URL is restricted you can use `https://user:password@example.org/...` for HTTP basic auth.
+  Other authentication methods are not supported,
+  you'll have to download the archive manually and use `file://` in that case.
 
 - `.deps.<target>` contains the dependencies for the plugin
   (The WaTTS / TTS package is _not_ included automatically, see #1).

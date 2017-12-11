@@ -23,7 +23,14 @@ do
     depends+=($dep)
 done
 
-source=("${pkgname}-${pkgver}.tar.gz::$(echo $CONFIG | jq -r .archive.targz)")
+_targz=$(echo $CONFIG | jq -r .archive.targz)
+if [[ $_targz =~ ^file ]]
+then
+    cp "${_targz#file://}" "${pkgname}-${pkgver}.tar.gz"
+    source=("${pkgname}-${pkgver}.tar.gz")
+else
+    source=("${pkgname}-${pkgver}.tar.gz::$(echo $CONFIG | jq -r .archive.targz)")
+fi
 md5sums=('SKIP')
 
 build() {
