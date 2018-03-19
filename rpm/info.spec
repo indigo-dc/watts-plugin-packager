@@ -20,7 +20,7 @@ Release:    	  1
 License:    	  Apache
 Source0:        %(echo $CONFIG | jq -r .archive.targz)
 Requires:       %(echo $CONFIG | jq -r '.deps.rpm | join(", ")')
-BuildArch:	    %(echo $CONFIG | jq -r .archtecture.rpm)
+BuildArch:	    %(echo $CONFIG | jq -r .architecture.rpm)
 
 %description
 %(echo $CONFIG | jq -r .pkg.long_desc)
