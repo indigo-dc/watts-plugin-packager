@@ -15,7 +15,7 @@ url="https://github.com/indigo-dc/tts_plugin_info"
 pkgver=$(echo $CONFIG | jq -r .pkg.version)
 pkgrel=1
 pkgdesc=$(echo $CONFIG | jq -r .pkg.short_desc)
-arch=(any)
+arch=($(echo $CONFIG | jq -r .architecture.arch)
 license=(Apache)
 depends=()
 for dep in $(echo $CONFIG | jq -r '.deps.arch[]')

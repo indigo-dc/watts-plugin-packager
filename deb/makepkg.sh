@@ -34,7 +34,7 @@ mkdir -p "${pkgdir}/DEBIAN" || exit
 cat << EOF > ${pkgdir}/DEBIAN/control
 Package: ${pkgname}
 Version: ${pkgver}-${pkgrel}
-Architecture: all
+Architecture: $(echo $CONFIG | jq .architecture.deb)
 Depends: $(echo ${depends[@]} | tr ' ' ',')
 Maintainer: $(echo $CONFIG | jq -r .pkg.maintainer)
 Description: $(echo $CONFIG | jq -r .pkg.short_desc)

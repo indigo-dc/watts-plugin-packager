@@ -40,6 +40,11 @@ else
                    deb: [],
                    rpm: ["yum"]
                  },
+                 architecture: {
+                   arch: (.pkg.architecture // "any"),
+                   rpm: (.pkg.architecture // "noarch"),
+                   deb: (.pkg.architecture // "all")
+                 }
                  build: {
                    bash: []
                  }
