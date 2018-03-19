@@ -92,6 +92,13 @@ Dependencies
   Older versions (like found in Ubuntu 14.04) will result in default configuration not being applied correctly.
   If you provide all optional keys in your json, your safe.
 
+List of currently supported plugins
+-----------------------------------
+Here is a quick list of repos currently enabled for this packager:
+- https://github.com/watts-kit/watts_plugin_ssh
+- https://github.com/watts-kit/watts_plugin_myproxy_ssh
+- https://github.com/watts-kit/watts_plugin_rcauth
+
 Disclaimer
 ----------
 This is only a simple script for internal usage.
