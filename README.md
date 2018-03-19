@@ -4,6 +4,15 @@ Package WaTTS plugins for _pacman_, _apt_ and _yum_.
 
 Synopsis
 ========
+You don't need to clone the repo / download a tarball of the plugin manually.
+This is done by **makepkg.sh**.
+This procedure is consistent with
+the package-maintainers workflow
+of having a build tool download the source of the to-be-built package,
+instead of the developers workflow
+of running a build tool inside the package source.
+
+So, just check out *this* repo and run:
 ```sh
  $ ./makepkg.sh <type> <config> [curl_args...]
 ```
