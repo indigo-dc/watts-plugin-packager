@@ -40,7 +40,7 @@ done
 %install
 cd $(find "$RPM_SOURCE_DIR" -maxdepth 1 -type d -name "$(echo $CONFIG | jq -r .pkg.name)*$(echo $CONFIG | jq -r .pkg.version)" | head -n1)
 mkdir -p "$RPM_BUILD_ROOT/var/lib/watts/plugins"
-cp plugin/* "$RPM_BUILD_ROOT/var/lib/watts/plugins"
+cp -r plugin/* "$RPM_BUILD_ROOT/var/lib/watts/plugins"
 
 %clean
 rm -rf %RPM_BUILD_ROOT
