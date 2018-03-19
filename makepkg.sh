@@ -35,8 +35,8 @@ else
                  },
                  deps: {
                    arch: [],
-                   arch: [],
-                   arch: []
+                   deb: [],
+                   rpm: []
                  },
                  build: {
                    bash: []
