@@ -19,6 +19,8 @@ else
     conf=$1; shift
     curl_args=$@
 
+    # Note: RPM spec files have a problem with empty dependencies,
+    # so we add at least "glibc" which should be installed anyway
     export CONFIG=$(
         if   [[ -f $conf ]];       then jq -c . "$conf"
         elif [[ $conf =~ ^http ]]; then curl -fL $curl_args "$conf"
@@ -36,7 +38,7 @@ else
                  deps: {
                    arch: [],
                    deb: [],
-                   rpm: []
+                   rpm: ["glibc"]
                  },
                  build: {
                    bash: []
