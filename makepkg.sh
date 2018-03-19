@@ -20,7 +20,7 @@ else
     curl_args=$@
 
     # Note: RPM spec files have a problem with empty dependencies,
-    # so we add at least "glibc" which should be installed anyway
+    # so we add at least "yum" which should be installed anyway and is arch independent
     export CONFIG=$(
         if   [[ -f $conf ]];       then jq -c . "$conf"
         elif [[ $conf =~ ^http ]]; then curl -fL $curl_args "$conf"
@@ -38,7 +38,7 @@ else
                  deps: {
                    arch: [],
                    deb: [],
-                   rpm: ["glibc"]
+                   rpm: ["yum"]
                  },
                  build: {
                    bash: []
